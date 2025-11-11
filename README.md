@@ -8,9 +8,11 @@ The AI Brand Manager combines AI-powered insights, content generation, and strat
 
 ## Documentation
 
+- **[Quick Start Guide](QUICK_START.md)** - Fast overview for all stakeholders (start here!)
 - **[Product Specification](PRODUCT_SPEC.md)** - Complete product vision, features, and roadmap
 - **[User Personas](USER_PERSONAS.md)** - Target user profiles and use cases
 - **[Feature Specifications](FEATURE_SPECS.md)** - Detailed feature requirements and workflows
+- **[Technical Architecture](TECHNICAL_ARCHITECTURE.md)** - System design and implementation details
 
 ## Key Features
 
