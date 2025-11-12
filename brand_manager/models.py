@@ -34,4 +34,5 @@ class TopicResearchResult(BaseModel):
     statistics: List[str] = Field(default_factory=list, description="Relevant statistics and data points")
     audience_interests: List[str] = Field(default_factory=list, description="What audiences care about regarding this topic")
     content_angles: List[str] = Field(default_factory=list, description="Suggested angles for content creation")
+    competitor_insights: List[str] = Field(default_factory=list, description="Analysis of how competitors approach this topic")
     keywords: List[str] = Field(default_factory=list, description="Important keywords and phrases")

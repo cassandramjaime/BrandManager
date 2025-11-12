@@ -8,6 +8,7 @@ AI-powered content topic research tool that helps you research any topic dynamic
 - **Structured Results**: Get organized research with key points, trends, statistics, and more
 - **Multiple Depth Levels**: Choose from quick, standard, or deep research based on your needs
 - **Focus Areas**: Specify particular aspects to focus on (trends, statistics, audience interests, etc.)
+- **Competitor Analysis**: Understand how competitors approach the topic and identify content gaps
 - **Content Angles**: Get suggested angles for creating content on your researched topic
 - **Keyword Extraction**: Identify important keywords and phrases related to the topic
 - **Export Results**: Save research results to JSON for later use
@@ -22,6 +23,7 @@ Content topic dynamic research uses AI to automatically research and analyze any
 - **Statistics & Data**: Relevant numbers and data points
 - **Audience Interests**: What people care about regarding this topic
 - **Content Angles**: Different perspectives and approaches for creating content
+- **Competitor Insights**: How competitors approach this topic and what content opportunities exist
 - **Keywords**: Important terms and phrases to include
 
 ## Installation 🚀
@@ -92,6 +94,7 @@ This will give you:
 - Key points to cover
 - Statistics to cite
 - Content angles to explore
+- Competitor insights and content gaps
 
 ### Example 2: Quick Social Media Research
 
@@ -120,7 +123,7 @@ topic-research research TOPIC [OPTIONS]
 **Options:**
 - `--depth [quick|standard|deep]` - Research depth (default: standard)
 - `--focus AREA` - Focus area (can be used multiple times)
-  - Available areas: `trends`, `statistics`, `key_points`, `audience_interests`, `content_angles`, `keywords`
+  - Available areas: `trends`, `statistics`, `key_points`, `audience_interests`, `content_angles`, `competitor_insights`, `keywords`
 - `--output FILE` - Save results to JSON file
 
 **Examples:**
@@ -165,6 +168,10 @@ The tool provides structured research in these categories:
 2. **KEY POINTS** - 5-8 most important facts and insights
 3. **CURRENT TRENDS** - 3-5 trends related to the topic
 4. **STATISTICS & DATA** - 3-5 relevant statistics
+5. **AUDIENCE INTERESTS** - 3-5 things audiences care about
+6. **CONTENT ANGLES** - 3-5 suggested approaches for content
+7. **COMPETITOR INSIGHTS** - 3-5 insights on how competitors approach the topic and content opportunities
+8. **KEYWORDS** - 8-12 important keywords and phrases
 5. **AUDIENCE INTERESTS** - 3-5 things audiences care about
 6. **CONTENT ANGLES** - 3-5 suggested approaches for content
 7. **KEYWORDS** - 8-12 important keywords and phrases

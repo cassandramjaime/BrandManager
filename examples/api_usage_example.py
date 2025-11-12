@@ -102,6 +102,10 @@ def main():
         for angle in result.content_angles:
             print(f"  • {angle}")
         
+        print(f"\nCompetitor Insights:")
+        for insight in result.competitor_insights:
+            print(f"  • {insight}")
+        
         print(f"\nKeywords: {', '.join(result.keywords[:10])}")
         
         # Example 5: Saving results to JSON
@@ -132,6 +136,7 @@ def main():
         print(f"  - Statistics: {len(result.statistics)} items")
         print(f"  - Audience Interests: {len(result.audience_interests)} items")
         print(f"  - Content Angles: {len(result.content_angles)} items")
+        print(f"  - Competitor Insights: {len(result.competitor_insights)} items")
         print(f"  - Keywords: {len(result.keywords)} items")
         
         print("\n" + "=" * 70)

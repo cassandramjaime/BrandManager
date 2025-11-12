@@ -86,6 +86,12 @@ CONTENT ANGLES:
 - [Angle 3]
 [Continue with 3-5 content angles]
 
+COMPETITOR INSIGHTS:
+- [How competitors approach this topic - angle 1]
+- [What successful content exists - example 1]
+- [Content gaps and opportunities - insight 1]
+[Continue with 3-5 competitor insights]
+
 KEYWORDS:
 [Comma-separated list of 8-12 important keywords]
 
@@ -125,6 +131,7 @@ Make sure all information is current, accurate, and useful for content creation.
             "statistics": [],
             "audience_interests": [],
             "content_angles": [],
+            "competitor_insights": [],
             "keywords": []
         }
         
@@ -151,6 +158,9 @@ Make sure all information is current, accurate, and useful for content creation.
                 continue
             elif line.startswith('CONTENT ANGLES:'):
                 current_section = 'content_angles'
+                continue
+            elif line.startswith('COMPETITOR INSIGHTS:'):
+                current_section = 'competitor_insights'
                 continue
             elif line.startswith('KEYWORDS:'):
                 current_section = 'keywords'
@@ -189,5 +199,6 @@ Make sure all information is current, accurate, and useful for content creation.
             statistics=sections['statistics'],
             audience_interests=sections['audience_interests'],
             content_angles=sections['content_angles'],
+            competitor_insights=sections['competitor_insights'],
             keywords=sections['keywords']
         )

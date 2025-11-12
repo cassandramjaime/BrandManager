@@ -50,6 +50,11 @@ CONTENT ANGLES:
 - The future of personalized medicine
 - Balancing AI efficiency with human care
 
+COMPETITOR INSIGHTS:
+- Leading healthcare tech companies focus on AI-powered diagnostics
+- Successful content emphasizes patient outcomes and real-world case studies
+- Content gap: practical implementation guides for small practices
+
 KEYWORDS:
 AI healthcare, medical AI, diagnostic tools, machine learning, patient care, telemedicine, predictive analytics, personalized medicine"""
         
@@ -107,11 +112,13 @@ class TestTopicResearchResult:
             statistics=["Stat 1"],
             audience_interests=["Interest 1"],
             content_angles=["Angle 1"],
+            competitor_insights=["Competitor insight 1"],
             keywords=["AI", "machine learning"]
         )
         assert result.topic == "AI"
         assert len(result.key_points) == 2
         assert len(result.keywords) == 2
+        assert len(result.competitor_insights) == 1
     
     def test_result_defaults(self):
         """Test result with minimal data"""
@@ -123,6 +130,7 @@ class TestTopicResearchResult:
         assert result.summary == "Test summary"
         assert result.key_points == []
         assert result.trends == []
+        assert result.competitor_insights == []
 
 
 class TestAITopicResearcher:
@@ -249,6 +257,10 @@ CONTENT ANGLES:
 - How-to guide approach
 - Expert interview format
 
+COMPETITOR INSIGHTS:
+- Competitors focus on case studies
+- Popular content uses visual infographics
+
 KEYWORDS:
 test, example, research, topic, AI, technology"""
         
@@ -261,6 +273,7 @@ test, example, research, topic, AI, technology"""
         assert len(result.statistics) == 2
         assert len(result.audience_interests) == 2
         assert len(result.content_angles) == 2
+        assert len(result.competitor_insights) == 2
         assert len(result.keywords) > 0
     
     def test_parse_research_response_handles_missing_sections(self, mock_openai_client):
@@ -277,3 +290,4 @@ Just a summary with nothing else."""
         # Other fields should be empty lists
         assert result.key_points == []
         assert result.trends == []
+        assert result.competitor_insights == []

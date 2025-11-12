@@ -99,6 +99,13 @@ def research(topic, depth, focus, output):
                 click.echo(f"  • {angle}")
             click.echo()
         
+        # Competitor Insights
+        if result.competitor_insights:
+            click.echo(f"{Fore.YELLOW}COMPETITOR INSIGHTS:{Style.RESET_ALL}")
+            for insight in result.competitor_insights:
+                click.echo(f"  • {insight}")
+            click.echo()
+        
         # Keywords
         if result.keywords:
             click.echo(f"{Fore.YELLOW}KEYWORDS:{Style.RESET_ALL}")
