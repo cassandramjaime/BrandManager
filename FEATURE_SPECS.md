@@ -702,7 +702,449 @@ High Priority Connections:
 
 ---
 
-## 5. Implementation Priorities
+## 5. Media Opportunities & Thought Leadership
+
+### 5.1 Article Writing Opportunities (HARO-Style)
+
+#### Feature: Journalist Query Feed
+
+**Purpose**: Connect users with journalist requests seeking expert sources for articles, matching them to relevant opportunities.
+
+**User Flow**:
+1. User opens Media Opportunities dashboard
+2. Views daily feed of 3-5 journalist queries matched to their expertise
+3. Clicks on query to see full details
+4. Reviews AI-generated pitch response
+5. Customizes pitch with specific examples
+6. Submits response via platform or copies to email
+7. Tracks submission status and follow-ups
+
+**Data Collected**:
+- User expertise areas and content pillars
+- Past media appearances and credibility signals
+- Preferred publication types and audience size
+- Time availability for interviews/quotes
+- Geographic and industry preferences
+
+**Technical Requirements**:
+- Integration with HARO API
+- Social media monitoring for journalist requests (Twitter/X, LinkedIn)
+- Industry publication database
+- Query categorization by topic, industry, urgency
+- Match scoring algorithm (expertise + content pillars + deadlines)
+- Email template generation
+- Submission tracking system
+- Publication impact metrics
+
+**Query Display Format**:
+```
+🎯 MATCH SCORE: 92/100
+
+Journalist Request:
+"Tech journalist seeking product management experts for TechCrunch article 
+on AI integration in product roadmaps"
+
+Publication: TechCrunch
+Reach: 500K+ monthly readers
+Deadline: 24 hours
+Category: Product Management, AI, Technology
+
+Why This Matches:
+✓ Aligns with your "Product Strategy" content pillar
+✓ TechCrunch audience overlaps with your target demographic
+✓ You've published on AI and roadmapping before
+
+Your Suggested Angle:
+"Share your framework for evaluating AI features using customer value metrics"
+
+What They Need:
+- 3-5 specific examples or data points
+- 200-300 word expert quote
+- Professional headshot and bio
+- Response by: Nov 13, 5:00 PM EST
+```
+
+**AI Pitch Generation**:
+```
+Input: User expertise + query details + content history
+Output: Personalized pitch email
+
+Example:
+---
+Subject: PM Expert for AI Roadmap Article - [Your Name]
+
+Hi [Journalist Name],
+
+I saw your query seeking product management experts for your TechCruch article 
+on AI in roadmapping. I'd be happy to contribute.
+
+I'm [Your Name], [Your Title] with 8+ years leading product teams at [Companies]. 
+I specialize in AI feature prioritization and have written extensively about 
+product strategy on my Substack (5K subscribers).
+
+Unique angles I can provide:
+• Framework for scoring AI features against customer value metrics
+• Real example: How we evaluated 50+ AI feature ideas down to 3 priorities
+• Data on AI feature adoption rates vs traditional features (from my research)
+
+I can provide:
+- 3-5 specific, quotable insights with data
+- 300-word expert perspective
+- Professional headshot and bio
+- Response within 8 hours
+
+My previous features: [Link to media portfolio]
+
+Available for follow-up questions at [phone/email].
+
+Best regards,
+[Your Name]
+---
+```
+
+**Success Metrics**:
+- Query match accuracy: 80%+ relevance based on user feedback
+- Pitch generation time: < 2 minutes
+- Response submission: 40% of high-match queries receive user response
+- Acceptance rate: 25% of submitted pitches result in publication
+- Time saved: 15 minutes per opportunity vs manual search and draft
+
+---
+
+#### Feature: Publication Impact Tracking
+
+**Purpose**: Monitor and measure the impact of published articles on brand growth.
+
+**Tracking Capabilities**:
+- Published article URL submission
+- Publication date and outlet
+- Estimated reach (publication audience size)
+- Backlinks to user's platforms
+- Referral traffic from article
+- Follower growth correlation
+- Social shares and engagement
+
+**Impact Dashboard**:
+```
+Article Performance
+
+"5 Product Strategy Mistakes" - TechCrunch
+Published: Nov 10, 2025
+Reach: 500K readers
+Impact:
+├─ Referral Traffic: 2,500 visits to your Substack
+├─ New Followers: +45 LinkedIn, +30 Substack subscribers
+├─ Backlinks: 3 high-authority links
+├─ Social Shares: 850 shares
+└─ Estimated ROI: 10x (time invested vs reach gained)
+
+Growth Correlation:
+During publication week: +35% follower growth vs baseline
+```
+
+---
+
+### 5.2 Podcast Guest Opportunities
+
+#### Feature: Podcast Discovery & Matching
+
+**Purpose**: Connect users with podcast hosts actively seeking guests in their expertise area.
+
+**Discovery Sources**:
+- PodMatch platform integration
+- MatchMaker.fm API
+- PodcastGuests.com database
+- Social media monitoring (hosts posting guest callouts)
+- Podcast directory scanning (Apple Podcasts, Spotify)
+- Guest request communities (Reddit, LinkedIn groups)
+- Reverse engineering (where similar experts appeared)
+
+**Matching Algorithm**:
+```
+Score = (Topic Alignment × 0.30) 
+      + (Audience Overlap × 0.25)
+      + (Show Quality × 0.20)
+      + (Growth Potential × 0.15)
+      + (Host Credibility × 0.10)
+
+Topic Alignment: Match between show topics and user's content pillars
+Audience Overlap: Show listener demographics vs user's target audience
+Show Quality: Production quality, consistency, listener reviews
+Growth Potential: Show growth trajectory and audience engagement
+Host Credibility: Host background, guest caliber, industry reputation
+```
+
+**Opportunity Display**:
+```
+🎙️ MATCH SCORE: 88/100
+
+Product Thinking Podcast
+Host: Melissa Perri
+Audience: 25K per episode • B2B Product Leaders
+Format: 45-60 min deep-dive interviews
+Frequency: Weekly
+
+Why This Matches:
+✓ 95% topic alignment (product strategy, team scaling)
+✓ Audience is 80% your target demographic (B2B PMs, Directors)
+✓ High show quality (professional production, consistent schedule)
+✓ Growing audience (+15% monthly)
+
+Recent Guest Topics:
+- "Building product organizations from 5 to 50"
+- "Transitioning from IC to product leadership"
+- "Metrics that actually matter for product teams"
+
+Your Pitch Angle:
+"Scaling product teams without losing innovation velocity"
+
+Suggested Episode Topics (choose 1-2):
+1. "The 3-phase framework for scaling product orgs"
+2. "Hiring vs promoting: Building your product leadership bench"
+3. "Maintaining product velocity as teams grow"
+
+Application Process:
+Apply via: Website form
+Lead Time: 4-6 weeks from application to recording
+Preparation: 30-min pre-call with producer
+
+Impact Potential: High (large, engaged audience in your niche)
+```
+
+**User Flow**:
+1. Browse daily podcast opportunity feed (5-7 shows)
+2. Filter by audience size, topic, format, time commitment
+3. Click opportunity to view show details:
+   - Recent episode list and topics
+   - Guest profile analysis
+   - Listener demographics
+   - Host interview style
+   - Application requirements
+4. Generate personalized pitch
+5. Review and customize pitch email
+6. Submit application via platform or email
+7. Track application status
+8. Receive booking confirmation
+9. Access interview preparation materials
+
+---
+
+#### Feature: Interview Preparation Assistant
+
+**Purpose**: Help users prepare for podcast interviews with talking points and key messages.
+
+**Preparation Workflow**:
+
+**1. Pre-Interview Brief** (Generated 1 week before recording)
+```
+Interview Prep: Product Thinking Podcast
+Recording Date: Dec 15, 2025, 2:00 PM EST
+Format: 60-minute conversation
+Host: Melissa Perri
+
+YOUR KEY MESSAGES (Aligned with content pillars):
+
+1. Product Strategy Pillar:
+   → Main Message: "Scaling product teams requires deliberate systems, not just headcount"
+   → Supporting Points:
+     • The 3-phase scaling framework (0-10, 10-50, 50+ people)
+     • Metrics that matter at each phase
+     • Common pitfalls to avoid
+
+2. Leadership Pillar:
+   → Main Message: "Great product leaders build decision-making frameworks, not make all decisions"
+   → Supporting Points:
+     • Delegation without chaos
+     • Hiring for judgment vs experience
+     • Creating autonomous teams
+
+3. Career Development Pillar:
+   → Main Message: "The IC to leadership transition is a skill shift, not a promotion"
+   → Supporting Points:
+     • Skills that got you here won't get you there
+     • Learning to lead through others
+     • Measuring success differently
+```
+
+**2. Story Bank** (Curated from user's content and profile)
+```
+YOUR BEST STORIES TO SHARE:
+
+High-Impact Stories:
+1. "The roadmap that killed innovation"
+   Setup: Team grew from 5 to 30, suddenly nothing shipped
+   Conflict: Too many features, no focus, burned out team
+   Resolution: Implemented 3-priority system, shipped 3x in next quarter
+   Lesson: "Your roadmap should be 1/3 of what you want to build"
+   Use when: Discussing scaling challenges, prioritization
+
+2. "The PM I almost didn't hire"
+   Setup: Candidate didn't fit traditional PM mold
+   Conflict: Debate with hiring team about unconventional background
+   Resolution: Hired anyway, became star performer
+   Lesson: "Hire for judgment and curiosity, not resume checkboxes"
+   Use when: Discussing hiring, team building, talent identification
+
+3. "Saying no to the CEO"
+   Setup: CEO wanted pet feature on roadmap
+   Conflict: Feature didn't align with strategy or customer needs
+   Resolution: Presented data, offered alternative, CEO agreed
+   Lesson: "Product strategy means protecting what you say no to"
+   Use when: Discussing stakeholder management, strategy, courage
+```
+
+**3. Likely Questions & Answers**
+```
+EXPECT THESE QUESTIONS:
+
+Q: "What's the biggest mistake you see product leaders make when scaling?"
+Your Answer:
+"Trying to scale the team before scaling the systems. Leaders hire 10 PMs 
+but don't create frameworks for decision-making, prioritization, or communication. 
+You end up with more people but less clarity.
+
+My framework: For every 5 people you add, create 1 new system. At 10 people, 
+you need clear prioritization frameworks. At 20, product strategy documents. 
+At 30, decision-making authorities defined.
+
+Story: [Use "The roadmap that killed innovation" story]"
+
+Q: "How do you maintain innovation as teams grow?"
+Your Answer:
+[AI-generated based on your content pillars and past writing]
+
+Q: "What advice would you give someone making the IC to manager transition?"
+Your Answer:
+[AI-generated based on your career pillar content]
+```
+
+**4. Technical & Logistics Checklist**
+```
+RECORDING SETUP:
+
+Equipment:
+☐ Test microphone (use [recommended mic])
+☐ Check audio levels in quiet space
+☐ Have headphones ready
+☐ Close background apps/notifications
+
+Environment:
+☐ Quiet room, minimal echo
+☐ "Recording - Do Not Disturb" sign on door
+☐ Turn off phone notifications
+☐ Have water nearby (muted sips only!)
+
+Pre-Recording:
+☐ Join 5 minutes early
+☐ Quick audio/video check with producer
+☐ Have notes/story bank visible but not reading
+☐ Relaxed and conversational tone
+
+During Recording:
+☐ Speak clearly and with energy
+☐ Use specific examples and stories
+☐ Tie back to key messages
+☐ Be yourself, authentic > perfect
+```
+
+**5. Post-Interview Action Plan**
+```
+AFTER RECORDING (Execute within 24 hours):
+
+Immediate:
+☐ Send thank you email to host/producer
+☐ Connect with host on LinkedIn
+☐ Share recording date on social media (teaser)
+☐ Add to media portfolio tracking
+
+When Episode Publishes:
+☐ Share on all platforms (LinkedIn, Twitter, Substack)
+☐ Tag host and show in posts
+☐ Create derivative content:
+   - LinkedIn post with key insights
+   - Twitter thread of best quotes
+   - Substack article expanding on main topic
+   - YouTube clip (if video podcast)
+☐ Thank engaged listeners in comments
+☐ Monitor referral traffic and new followers
+☐ Update media portfolio with metrics
+
+Repurposing Plan:
+Week 1: Share episode announcement
+Week 2: LinkedIn carousel of key frameworks discussed
+Week 3: Substack article: "Expanded thoughts from my podcast appearance"
+Week 4: YouTube clip of best 5-minute segment
+```
+
+---
+
+#### Feature: Media Portfolio & ROI Tracking
+
+**Purpose**: Centralized dashboard of all media appearances with impact analytics.
+
+**Portfolio Display**:
+```
+YOUR MEDIA PORTFOLIO
+
+Total Appearances: 12
+Total Reach: 850K people
+Average ROI: 8.5x (time invested vs reach gained)
+
+ARTICLES (7)
+──────────────────────────────────────────────
+TechCrunch: "AI in Product Roadmaps"
+Date: Nov 10, 2025
+Reach: 500K readers
+Impact: +45 LinkedIn followers, 2.5K website visits
+ROI: 12x
+
+SaaStr: "Scaling Product Teams"
+Date: Oct 15, 2025
+Reach: 80K readers
+Impact: +15 followers, 500 visits, 3 quality leads
+ROI: 6x
+
+[View all articles →]
+
+PODCASTS (5)
+──────────────────────────────────────────────
+Product Thinking Podcast
+Date: Dec 1, 2025
+Reach: 25K downloads
+Impact: +120 Substack subscribers, +60 LinkedIn
+ROI: 10x
+Content Created: 1 article, 3 social posts, 1 video clip
+
+The PM Career Show
+Date: Oct 20, 2025
+Reach: 5K downloads
+Impact: +25 followers, high engagement
+ROI: 5x
+
+[View all podcasts →]
+
+IMPACT TRENDS
+──────────────────────────────────────────────
+[Graph showing follower growth correlation with media appearances]
+
+Best Performing Media Type: High-authority publications (12x avg ROI)
+Optimal Frequency: 2-3 appearances per month
+Peak Growth Period: Week following publication/episode release
+```
+
+**Impact Metrics Tracked**:
+- Publication/episode reach (audience size)
+- Referral traffic to owned platforms
+- Follower growth correlation (spike analysis)
+- Backlinks and domain authority
+- Social media mentions and shares
+- Lead generation (for business-focused creators)
+- Speaking opportunity leads from media
+- Time invested vs reach gained (ROI)
+
+---
+
+## 6. Implementation Priorities
 
 ### Phase 1: MVP (Must-Have)
 1. Brand assessment and strategy generation
@@ -717,6 +1159,8 @@ High Priority Connections:
 3. Comment response assistance
 4. Long-form content support
 5. Visual brand guidelines
+6. **Media Opportunities: Article writing queries (HARO integration)**
+7. **AI pitch generation for journalist requests**
 
 ### Phase 3: Advanced (Nice-to-Have)
 1. Video content support
@@ -724,6 +1168,9 @@ High Priority Connections:
 3. A/B testing
 4. Competitor analysis
 5. Mobile apps
+6. **Podcast guest opportunities (PodMatch integration)**
+7. **Interview preparation assistant**
+8. **Media portfolio and impact tracking**
 
 ---
 
@@ -738,3 +1185,11 @@ High Priority Connections:
 | Engagement | Comments responded to | 60% |
 | Calendar | Posts scheduled in advance | 80% |
 | Strategy | Users hitting 90-day goals | 55% |
+| Media Query Matching | Relevance score accuracy | 80%+ |
+| Pitch Generation | Time to create pitch | < 2 min |
+| Media Engagement | Users responding to opportunities | 40%+ |
+| Pitch Success | Acceptance rate | 25%+ |
+| Podcast Discovery | Matched shows per week | 5-7 |
+| Interview Prep | Users accessing prep materials | 90% |
+| Media ROI | Average reach multiplier | 8-10x |
+| Portfolio Growth | Appearances per quarter | 2-3 |
