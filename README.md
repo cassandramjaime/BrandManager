@@ -1,10 +1,10 @@
 # AI Brand Manager
 
-An intelligent platform that helps individuals build, maintain, and execute a comprehensive personal brand strategy.
+An intelligent platform that helps content creators stay strategically aligned and always current with a daily trending topics feed and dynamic editorial calendar for YouTube, Substack, and LinkedIn.
 
 ## Overview
 
-The AI Brand Manager combines AI-powered insights, content generation, and strategic planning to help professionals establish and grow their presence across multiple platforms. Whether you're building thought leadership, growing a business, or advancing your career, our AI assistant guides you through every step of your personal branding journey.
+The AI Brand Manager focuses on three high-value capabilities: Personal Brand Assessment, Strategy Creation, and Dynamic Content Planning. Get daily trending topic updates in your industry, automatically integrated into your editorial calendar, while tracking follower growth across YouTube, Substack, and LinkedIn—all in one dashboard.
 
 ## Documentation
 
@@ -16,64 +16,67 @@ The AI Brand Manager combines AI-powered insights, content generation, and strat
 
 ## Key Features
 
-### 🎯 Brand Strategy Development
-- Personalized brand assessment and strategy creation
-- Unique value proposition generator
-- 90-day action plan with concrete milestones
+### 🎯 Personal Brand Assessment
+- 15-minute questionnaire about expertise and goals
+- AI-powered unique value proposition generation
 - Target audience identification
+- Content strengths analysis
 
-### ✍️ AI-Powered Content Creation
-- Intelligent post generation for LinkedIn, Twitter, and more
-- Long-form content assistance for blogs and articles
-- Voice-consistent content across all platforms
-- Editorial calendar with AI-suggested topics
+### 📋 Strategy Creation
+- Brand vision and content pillars (3-5 core themes)
+- Platform-specific strategies for YouTube, Substack, and LinkedIn
+- Quarterly growth goals and progress tracking
+- Living strategy document that evolves with you
 
-### 📊 Performance Analytics
-- Unified dashboard across all platforms
-- AI-powered insights and recommendations
-- Goal tracking and progress monitoring
-- Competitive benchmarking
+### 📈 Dynamic Content Planning
+- **Daily Trending Topics Feed**: AI-monitored industry trends delivered every morning
+- **Smart Relevance Scoring**: Each topic rated for alignment with your content pillars
+- **30-Day Editorial Calendar**: Auto-updating with trending topics and strategic content
+- **One-Click Integration**: Add trending topics to your calendar instantly
+- **Content Mix Balancing**: 70% strategic, 20% timely, 10% experimental
 
-### 🤝 Network Building
-- Smart engagement assistance
-- Networking recommendations
-- Comment response generation
-- Relationship tracking
-
-### 🎨 Visual Brand Identity
-- Consistent visual guidelines
-- Branded content templates
-- Color palette and typography management
-- Professional design assets
+### 📊 Follower Growth Tracking
+- Unified dashboard for YouTube subscribers, Substack subscribers, and LinkedIn followers
+- Weekly and monthly growth trends
+- Content performance insights
+- Progress toward quarterly goals
 
 ## Target Users
 
-- **Mid-career professionals** establishing thought leadership
-- **Entrepreneurs** building their business brand
-- **Career switchers** creating their professional identity
-- **Consultants** generating consistent client pipeline
+- **Content Creators** actively building presence on YouTube, Substack, and LinkedIn
+- **Thought Leaders** who publish regularly but struggle to stay current with trends
+- **Professionals** transitioning to content creation who need strategic guidance
 
 ## Value Proposition
 
-Traditional personal brand management requires:
-- Expensive consultants ($5,000+ per month)
-- Significant time investment (10+ hours per week)
-- Marketing expertise most professionals don't have
+**The Problem:**
+- Staying current with industry trends requires hours of research daily
+- Generic content calendars don't account for emerging topics
+- Managing multiple platforms (YouTube, Substack, LinkedIn) separately is inefficient
+- No clear connection between trending topics and brand strategy
 
-**AI Brand Manager provides:**
-- Professional brand strategy at accessible pricing
-- Efficient content creation (minutes instead of hours)
-- Expert guidance without the learning curve
-- Measurable results and continuous optimization
+**Our Solution:**
+- **10 Minutes Daily**: Check trending topics, update calendar, track growth—all in one place
+- **Stay Relevant**: Never miss important industry conversations with daily trend monitoring
+- **Stay Strategic**: Trending topics filtered and scored for alignment with your content pillars
+- **Grow Consistently**: Track follower growth across all three platforms in unified dashboard
 
 ## Getting Started
 
 ### For Users
-1. Complete the brand assessment questionnaire
-2. Review your AI-generated strategy
-3. Connect your social media accounts
-4. Start creating and publishing content
-5. Track your progress and optimize
+1. Complete the 15-minute brand assessment
+2. Review your AI-generated strategy and content pillars
+3. Connect your YouTube, Substack, and LinkedIn accounts
+4. Check daily trending topics feed
+5. Add relevant topics to your editorial calendar
+6. Track your follower growth
+
+### Daily Workflow (10 Minutes)
+1. **Morning**: View today's trending topics (5 topics curated for you)
+2. **Select**: Choose 1-2 topics that align with your content pillars
+3. **Schedule**: Add to calendar with one click—AI suggests optimal date/platform
+4. **Track**: Check follower growth across all platforms
+5. **Review**: Weekly strategy alignment check (5 minutes)
 
 ### For Developers
 See [TECHNICAL_ARCHITECTURE.md](TECHNICAL_ARCHITECTURE.md) for:
@@ -85,40 +88,38 @@ See [TECHNICAL_ARCHITECTURE.md](TECHNICAL_ARCHITECTURE.md) for:
 
 ## Pricing Tiers
 
-- **Free** - Basic features to get started
-- **Professional** ($29/month) - Complete brand strategy and unlimited content
-- **Expert** ($79/month) - Advanced features and priority support
-- **Enterprise** (Custom) - Team accounts and white-label options
+- **Free** - Basic assessment, 5 trending topics/day, 7-day calendar preview
+- **Creator** ($19/month) - Full trending feed, 30-day calendar, all platform tracking
+- **Pro** ($49/month) - Advanced filtering, 60-day calendar, priority trend alerts
 
 ## Roadmap
 
 ### Phase 1: MVP (Months 1-4)
-- Brand assessment and strategy
-- LinkedIn and Twitter content creation
-- Basic analytics
+- Personal brand assessment and strategy
+- Daily trending topics feed
+- 30-day editorial calendar
+- Follower tracking dashboard (YouTube, Substack, LinkedIn)
 
-### Phase 2: Enhanced (Months 5-8)
-- Additional platforms (Instagram, Medium)
-- Long-form content support
-- Advanced analytics
+### Phase 2: Dynamic Calendar (Months 5-8)
+- Auto-updating calendar with trending topics
+- Advanced trend filtering
+- Strategy review dashboard
+- Mobile-responsive design
 
-### Phase 3: Scale (Months 9-12)
-- Video content support
-- Mobile apps
-- Community features
-
-### Phase 4: Advanced (Year 2)
-- Custom AI fine-tuning
-- Voice/video generation
-- International expansion
+### Phase 3: Intelligence (Months 9-12)
+- Predictive scheduling
+- Content pillar performance insights
+- Mobile apps (iOS/Android)
+- Custom topic alerts
 
 ## Technology Stack
 
-- **Frontend**: React/Next.js
+- **Frontend**: React/Next.js (optimized for daily use)
 - **Backend**: Node.js microservices
-- **Database**: PostgreSQL + MongoDB
-- **AI/ML**: GPT-4, custom fine-tuned models
-- **Infrastructure**: Cloud-native (AWS/GCP)
+- **Database**: PostgreSQL (user data) + MongoDB (trends, calendar)
+- **AI/ML**: GPT-4 for strategy, custom ML for trend detection
+- **Trend Sources**: RSS feeds, Twitter/X, Reddit, Google Trends
+- **Infrastructure**: AWS cloud-native
 
 ## Contributing
 
@@ -136,4 +137,4 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ---
 
-**Built with ❤️ for professionals who want to share their expertise with the world**
+**Built with ❤️ for content creators who want to stay current and grow their audience**
