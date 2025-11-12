@@ -1,140 +1,276 @@
-# AI Brand Manager
+# BrandManager 🎨
 
-An intelligent platform that helps content creators stay strategically aligned and always current with a daily trending topics feed and dynamic editorial calendar for YouTube, Substack, and LinkedIn.
+AI-powered content topic research tool that helps you research any topic dynamically to create better, more informed content.
 
-## Overview
+## Features ✨
 
-The AI Brand Manager focuses on three high-value capabilities: Personal Brand Assessment, Strategy Creation, and Dynamic Content Planning. Get daily trending topic updates in your industry, automatically integrated into your editorial calendar, while tracking follower growth across YouTube, Substack, and LinkedIn—all in one dashboard.
+- **Dynamic Topic Research**: Research any topic using AI to get comprehensive insights
+- **Structured Results**: Get organized research with key points, trends, statistics, and more
+- **Multiple Depth Levels**: Choose from quick, standard, or deep research based on your needs
+- **Focus Areas**: Specify particular aspects to focus on (trends, statistics, audience interests, etc.)
+- **Competitor Analysis**: Understand how competitors approach the topic and identify content gaps
+- **Content Angles**: Get suggested angles for creating content on your researched topic
+- **Keyword Extraction**: Identify important keywords and phrases related to the topic
+- **Export Results**: Save research results to JSON for later use
 
-## Documentation
+## What is Content Topic Dynamic Research?
 
-- **[Quick Start Guide](QUICK_START.md)** - Fast overview for all stakeholders (start here!)
-- **[Product Specification](PRODUCT_SPEC.md)** - Complete product vision, features, and roadmap
-- **[User Personas](USER_PERSONAS.md)** - Target user profiles and use cases
-- **[Feature Specifications](FEATURE_SPECS.md)** - Detailed feature requirements and workflows
-- **[Technical Architecture](TECHNICAL_ARCHITECTURE.md)** - System design and implementation details
+Content topic dynamic research uses AI to automatically research and analyze any topic you're interested in writing about. Instead of spending hours manually researching, you get:
 
-## Key Features
+- **Comprehensive Summary**: Quick overview of the topic
+- **Key Points**: Most important facts and insights
+- **Current Trends**: What's trending related to this topic
+- **Statistics & Data**: Relevant numbers and data points
+- **Audience Interests**: What people care about regarding this topic
+- **Content Angles**: Different perspectives and approaches for creating content
+- **Competitor Insights**: How competitors approach this topic and what content opportunities exist
+- **Keywords**: Important terms and phrases to include
 
-### 🎯 Personal Brand Assessment
-- 15-minute questionnaire about expertise and goals
-- AI-powered unique value proposition generation
-- Target audience identification
-- Content strengths analysis
+## Installation 🚀
 
-### 📋 Strategy Creation
-- Brand vision and content pillars (3-5 core themes)
-- Platform-specific strategies for YouTube, Substack, and LinkedIn
-- Quarterly growth goals and progress tracking
-- Living strategy document that evolves with you
+1. Clone the repository:
+```bash
+git clone https://github.com/cassandramjaime/BrandManager.git
+cd BrandManager
+```
 
-### 📈 Dynamic Content Planning
-- **Daily Trending Topics Feed**: AI-monitored industry trends delivered every morning
-- **Smart Relevance Scoring**: Each topic rated for alignment with your content pillars
-- **30-Day Editorial Calendar**: Auto-updating with trending topics and strategic content
-- **One-Click Integration**: Add trending topics to your calendar instantly
-- **Content Mix Balancing**: 70% strategic, 20% timely, 10% experimental
+2. Install the package:
+```bash
+pip install -e .
+```
 
-### 📊 Follower Growth Tracking
-- Unified dashboard for YouTube subscribers, Substack subscribers, and LinkedIn followers
-- Weekly and monthly growth trends
-- Content performance insights
-- Progress toward quarterly goals
+3. Set up your OpenAI API key:
+```bash
+cp .env.example .env
+# Edit .env and add your OpenAI API key
+```
 
-## Target Users
+## Quick Start ��
 
-- **Content Creators** actively building presence on YouTube, Substack, and LinkedIn
-- **Thought Leaders** who publish regularly but struggle to stay current with trends
-- **Professionals** transitioning to content creation who need strategic guidance
+### Basic Usage
 
-## Value Proposition
+Research a topic with standard depth:
+```bash
+topic-research research "AI in healthcare"
+```
 
-**The Problem:**
-- Staying current with industry trends requires hours of research daily
-- Generic content calendars don't account for emerging topics
-- Managing multiple platforms (YouTube, Substack, LinkedIn) separately is inefficient
-- No clear connection between trending topics and brand strategy
+### Quick Research (Faster, Less Detail)
 
-**Our Solution:**
-- **10 Minutes Daily**: Check trending topics, update calendar, track growth—all in one place
-- **Stay Relevant**: Never miss important industry conversations with daily trend monitoring
-- **Stay Strategic**: Trending topics filtered and scored for alignment with your content pillars
-- **Grow Consistently**: Track follower growth across all three platforms in unified dashboard
+```bash
+topic-research quick "sustainable fashion"
+```
 
-## Getting Started
+### Deep Research (Slower, More Comprehensive)
 
-### For Users
-1. Complete the 15-minute brand assessment
-2. Review your AI-generated strategy and content pillars
-3. Connect your YouTube, Substack, and LinkedIn accounts
-4. Check daily trending topics feed
-5. Add relevant topics to your editorial calendar
-6. Track your follower growth
+```bash
+topic-research deep "quantum computing applications"
+```
 
-### Daily Workflow (10 Minutes)
-1. **Morning**: View today's trending topics (5 topics curated for you)
-2. **Select**: Choose 1-2 topics that align with your content pillars
-3. **Schedule**: Add to calendar with one click—AI suggests optimal date/platform
-4. **Track**: Check follower growth across all platforms
-5. **Review**: Weekly strategy alignment check (5 minutes)
+### Focused Research
 
-### For Developers
-See [TECHNICAL_ARCHITECTURE.md](TECHNICAL_ARCHITECTURE.md) for:
-- System architecture and design
-- Technology stack
-- API documentation
-- Development setup
-- Deployment guidelines
+Focus on specific aspects:
+```bash
+topic-research research "electric vehicles" --focus trends --focus statistics
+```
 
-## Pricing Tiers
+### Save Results
 
-- **Free** - Basic assessment, 5 trending topics/day, 7-day calendar preview
-- **Creator** ($19/month) - Full trending feed, 30-day calendar, all platform tracking
-- **Pro** ($49/month) - Advanced filtering, 60-day calendar, priority trend alerts
+Export research to a JSON file:
+```bash
+topic-research research "remote work trends" --output results.json
+```
 
-## Roadmap
+## Usage Examples 📖
 
-### Phase 1: MVP (Months 1-4)
-- Personal brand assessment and strategy
-- Daily trending topics feed
-- 30-day editorial calendar
-- Follower tracking dashboard (YouTube, Substack, LinkedIn)
+### Example 1: Research for a Blog Post
 
-### Phase 2: Dynamic Calendar (Months 5-8)
-- Auto-updating calendar with trending topics
-- Advanced trend filtering
-- Strategy review dashboard
-- Mobile-responsive design
+```bash
+topic-research research "AI ethics" --depth deep --focus trends --focus audience_interests
+```
 
-### Phase 3: Intelligence (Months 9-12)
-- Predictive scheduling
-- Content pillar performance insights
-- Mobile apps (iOS/Android)
-- Custom topic alerts
+This will give you:
+- Current trends in AI ethics
+- What audiences care about
+- Key points to cover
+- Statistics to cite
+- Content angles to explore
+- Competitor insights and content gaps
 
-## Technology Stack
+### Example 2: Quick Social Media Research
 
-- **Frontend**: React/Next.js (optimized for daily use)
-- **Backend**: Node.js microservices
-- **Database**: PostgreSQL (user data) + MongoDB (trends, calendar)
-- **AI/ML**: GPT-4 for strategy, custom ML for trend detection
-- **Trend Sources**: RSS feeds, Twitter/X, Reddit, Google Trends
-- **Infrastructure**: AWS cloud-native
+```bash
+topic-research quick "plant-based diet benefits"
+```
 
-## Contributing
+Get a fast overview perfect for social media posts.
 
-We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+### Example 3: Comprehensive Article Research
 
-## License
+```bash
+topic-research deep "climate change solutions" --focus statistics --focus trends --output climate-research.json
+```
 
-[License information to be added]
+Deep dive with focus on data and trends, saved for reference.
 
-## Contact
+## Command Reference 📚
 
-- Website: [To be added]
-- Email: [To be added]
-- Twitter: [To be added]
+### `research` - Main Research Command
 
----
+```bash
+topic-research research TOPIC [OPTIONS]
+```
 
-**Built with ❤️ for content creators who want to stay current and grow their audience**
+**Options:**
+- `--depth [quick|standard|deep]` - Research depth (default: standard)
+- `--focus AREA` - Focus area (can be used multiple times)
+  - Available areas: `trends`, `statistics`, `key_points`, `audience_interests`, `content_angles`, `competitor_insights`, `keywords`
+- `--output FILE` - Save results to JSON file
+
+**Examples:**
+```bash
+topic-research research "blockchain technology"
+topic-research research "mental health" --depth deep
+topic-research research "AI art" --focus trends --focus statistics
+topic-research research "crypto" --output crypto-research.json
+```
+
+### `quick` - Quick Research
+
+```bash
+topic-research quick TOPIC [OPTIONS]
+```
+
+Fast research with less detail. Perfect for quick content ideas.
+
+**Example:**
+```bash
+topic-research quick "NFTs"
+```
+
+### `deep` - Deep Research
+
+```bash
+topic-research deep TOPIC [OPTIONS]
+```
+
+Comprehensive research with extensive analysis.
+
+**Example:**
+```bash
+topic-research deep "machine learning in medicine"
+```
+
+## Research Output Structure
+
+The tool provides structured research in these categories:
+
+1. **SUMMARY** - 2-3 sentence overview of the topic
+2. **KEY POINTS** - 5-8 most important facts and insights
+3. **CURRENT TRENDS** - 3-5 trends related to the topic
+4. **STATISTICS & DATA** - 3-5 relevant statistics
+5. **AUDIENCE INTERESTS** - 3-5 things audiences care about
+6. **CONTENT ANGLES** - 3-5 suggested approaches for content
+7. **COMPETITOR INSIGHTS** - 3-5 insights on how competitors approach the topic and content opportunities
+8. **KEYWORDS** - 8-12 important keywords and phrases
+5. **AUDIENCE INTERESTS** - 3-5 things audiences care about
+6. **CONTENT ANGLES** - 3-5 suggested approaches for content
+7. **KEYWORDS** - 8-12 important keywords and phrases
+
+## Programmatic Usage
+
+You can also use the tool in your Python scripts:
+
+```python
+from brand_manager.models import TopicResearchRequest
+from brand_manager.ai_manager import AITopicResearcher
+
+# Initialize researcher
+researcher = AITopicResearcher()
+
+# Create research request
+request = TopicResearchRequest(
+    topic="artificial intelligence ethics",
+    depth="deep",
+    focus_areas=["trends", "statistics", "audience_interests"]
+)
+
+# Conduct research
+result = researcher.research_topic(request)
+
+# Access results
+print(result.summary)
+print(result.key_points)
+print(result.trends)
+print(result.statistics)
+```
+
+## Use Cases 💡
+
+- **Content Writers**: Research topics before writing articles, blogs, or social posts
+- **Marketers**: Understand trending topics and audience interests
+- **Researchers**: Get quick overviews and key points on new topics
+- **Social Media Managers**: Find current trends and content angles
+- **Educators**: Research topics for lesson planning
+- **Anyone**: Learn about any topic quickly with structured information
+
+## Requirements 📋
+
+- Python 3.8+
+- OpenAI API key
+- Dependencies listed in `requirements.txt`
+
+## Development 🛠️
+
+### Running Tests
+
+```bash
+pytest tests/
+```
+
+### Project Structure
+
+```
+BrandManager/
+├── brand_manager/
+│   ├── __init__.py
+│   ├── models.py          # Pydantic models for requests/results
+│   ├── ai_manager.py      # Core AI research functionality
+│   └── cli.py             # Command-line interface
+├── tests/
+│   └── test_topic_research.py
+├── examples/
+│   └── api_usage_example.py
+├── setup.py
+├── requirements.txt
+└── README.md
+```
+
+## Tips for Best Results 💡
+
+1. **Be Specific**: More specific topics yield better results
+   - Good: "AI in healthcare diagnostics"
+   - Less good: "AI"
+
+2. **Use Focus Areas**: Narrow down to what you need
+   - `--focus trends` for latest developments
+   - `--focus statistics` for data and numbers
+   - `--focus content_angles` for writing ideas
+
+3. **Choose Appropriate Depth**: 
+   - `quick` for social media or quick reference
+   - `standard` for most blog posts and articles
+   - `deep` for comprehensive research or long-form content
+
+4. **Save Important Research**: Use `--output` to keep research for later reference
+
+## License 📄
+
+MIT License
+
+## Contributing 🤝
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## Support 💬
+
+If you encounter any issues or have questions, please file an issue on GitHub.
