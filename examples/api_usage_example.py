@@ -1,97 +1,142 @@
 #!/usr/bin/env python
 """
-Example usage of the Brand Manager API (for programmatic use)
+Example usage of the Topic Research API (for programmatic use)
 """
-import os
-from brand_manager.models import BrandIdentity, ContentRequest
-from brand_manager.ai_manager import AIBrandManager
+import json
+from brand_manager.models import TopicResearchRequest
+from brand_manager.ai_manager import AITopicResearcher
 
 
 def main():
-    """Example of using BrandManager programmatically"""
+    """Example of using Topic Researcher programmatically"""
     
     # Note: Make sure to set OPENAI_API_KEY environment variable
-    # or pass it directly to AIBrandManager(api_key="your-key")
+    # or pass it directly to AITopicResearcher(api_key="your-key")
     
-    # Create a brand identity
-    brand = BrandIdentity(
-        name="EcoTech Solutions",
-        tagline="Green Technology for a Better Tomorrow",
-        description="A sustainable technology company focused on renewable energy solutions",
-        values=["Sustainability", "Innovation", "Transparency"],
-        target_audience="Environmentally conscious businesses and consumers",
-        voice="Inspiring and educational",
-        industry="Renewable Energy",
-        unique_selling_points=[
-            "100% carbon neutral operations",
-            "Cutting-edge solar technology",
-            "Community-driven approach"
-        ]
-    )
+    print("=" * 70)
+    print("AI Topic Researcher - API Examples")
+    print("=" * 70)
     
-    print("=" * 60)
-    print("Brand Manager API Example")
-    print("=" * 60)
-    print(f"\nBrand Name: {brand.name}")
-    print(f"Tagline: {brand.tagline}")
-    print(f"Values: {', '.join(brand.values)}")
-    
-    # Initialize the AI Brand Manager
-    # This will raise an error if OPENAI_API_KEY is not set
     try:
-        manager = AIBrandManager()
-        manager.set_brand_identity(brand)
+        # Initialize the researcher
+        researcher = AITopicResearcher()
         
-        print("\n" + "=" * 60)
-        print("Example 1: Generate Taglines")
-        print("=" * 60)
-        print("\nGenerating tagline suggestions...")
-        taglines = manager.generate_tagline(variations=3)
-        for i, tagline in enumerate(taglines, 1):
-            print(f"{i}. {tagline}")
+        # Example 1: Basic topic research
+        print("\n" + "=" * 70)
+        print("Example 1: Basic Topic Research")
+        print("=" * 70)
         
-        print("\n" + "=" * 60)
-        print("Example 2: Generate Social Media Content")
-        print("=" * 60)
-        request = ContentRequest(
-            content_type="social_post",
-            topic="new solar panel product launch",
-            platform="linkedin",
-            length="medium"
+        request = TopicResearchRequest(
+            topic="sustainable energy solutions",
+            depth="standard"
         )
-        print(f"\nGenerating LinkedIn post about: {request.topic}")
-        content = manager.generate_content(request)
-        print(f"\n{content}")
         
-        print("\n" + "=" * 60)
-        print("Example 3: Analyze Brand Message")
-        print("=" * 60)
-        message = "Join us in revolutionizing clean energy! Our innovative solar solutions are changing the game."
-        print(f"\nAnalyzing message: '{message}'")
-        analysis = manager.analyze_brand_message(message)
-        print(f"\n{analysis['analysis']}")
+        print(f"\nResearching: {request.topic}")
+        result = researcher.research_topic(request)
         
-        print("\n" + "=" * 60)
-        print("Example 4: Get Strategy Advice")
-        print("=" * 60)
-        question = "How can we better engage with younger demographics on social media?"
-        print(f"\nQuestion: {question}")
-        advice = manager.get_brand_strategy_advice(question)
-        print(f"\nAdvice:\n{advice}")
+        print(f"\nSummary: {result.summary}")
+        print(f"\nKey Points ({len(result.key_points)}):")
+        for i, point in enumerate(result.key_points, 1):
+            print(f"  {i}. {point}")
         
-        print("\n" + "=" * 60)
-        print("Example 5: Brainstorm Campaign Ideas")
-        print("=" * 60)
-        goal = "Launch awareness campaign for Earth Day"
-        print(f"\nCampaign Goal: {goal}")
-        ideas = manager.brainstorm_campaign_ideas(goal, num_ideas=3)
-        for i, idea in enumerate(ideas, 1):
-            print(f"\nIdea {i}:")
-            print(idea)
+        # Example 2: Focused research
+        print("\n" + "=" * 70)
+        print("Example 2: Focused Research (Trends & Statistics)")
+        print("=" * 70)
         
-        print("\n" + "=" * 60)
+        request = TopicResearchRequest(
+            topic="remote work trends 2024",
+            depth="standard",
+            focus_areas=["trends", "statistics"]
+        )
+        
+        print(f"\nResearching: {request.topic}")
+        print(f"Focus areas: {', '.join(request.focus_areas)}")
+        result = researcher.research_topic(request)
+        
+        print(f"\nCurrent Trends ({len(result.trends)}):")
+        for trend in result.trends:
+            print(f"  • {trend}")
+        
+        print(f"\nStatistics ({len(result.statistics)}):")
+        for stat in result.statistics:
+            print(f"  • {stat}")
+        
+        # Example 3: Quick research
+        print("\n" + "=" * 70)
+        print("Example 3: Quick Research")
+        print("=" * 70)
+        
+        request = TopicResearchRequest(
+            topic="AI chatbots",
+            depth="quick"
+        )
+        
+        print(f"\nResearching (quick): {request.topic}")
+        result = researcher.research_topic(request)
+        
+        print(f"\nSummary: {result.summary}")
+        print(f"\nKey Points:")
+        for point in result.key_points[:3]:  # Just first 3 for quick
+            print(f"  • {point}")
+        
+        # Example 4: Deep research with content angles
+        print("\n" + "=" * 70)
+        print("Example 4: Deep Research for Content Creation")
+        print("=" * 70)
+        
+        request = TopicResearchRequest(
+            topic="mental health in the workplace",
+            depth="deep",
+            focus_areas=["audience_interests", "content_angles"]
+        )
+        
+        print(f"\nResearching (deep): {request.topic}")
+        result = researcher.research_topic(request)
+        
+        print(f"\nAudience Interests:")
+        for interest in result.audience_interests:
+            print(f"  • {interest}")
+        
+        print(f"\nContent Angles:")
+        for angle in result.content_angles:
+            print(f"  • {angle}")
+        
+        print(f"\nKeywords: {', '.join(result.keywords[:10])}")
+        
+        # Example 5: Saving results to JSON
+        print("\n" + "=" * 70)
+        print("Example 5: Saving Research Results")
+        print("=" * 70)
+        
+        request = TopicResearchRequest(
+            topic="blockchain in supply chain",
+            depth="standard"
+        )
+        
+        print(f"\nResearching: {request.topic}")
+        result = researcher.research_topic(request)
+        
+        # Convert to dict and save
+        result_dict = result.model_dump()
+        
+        output_file = "/tmp/research_results.json"
+        with open(output_file, 'w') as f:
+            json.dump(result_dict, f, indent=2)
+        
+        print(f"✓ Results saved to {output_file}")
+        print(f"\nResult structure:")
+        print(f"  - Summary: {len(result.summary)} characters")
+        print(f"  - Key Points: {len(result.key_points)} items")
+        print(f"  - Trends: {len(result.trends)} items")
+        print(f"  - Statistics: {len(result.statistics)} items")
+        print(f"  - Audience Interests: {len(result.audience_interests)} items")
+        print(f"  - Content Angles: {len(result.content_angles)} items")
+        print(f"  - Keywords: {len(result.keywords)} items")
+        
+        print("\n" + "=" * 70)
         print("Examples completed successfully!")
-        print("=" * 60)
+        print("=" * 70)
         
     except ValueError as e:
         print(f"\nError: {e}")
@@ -99,6 +144,10 @@ def main():
         print("  export OPENAI_API_KEY='your-api-key-here'")
         print("\nOr create a .env file with:")
         print("  OPENAI_API_KEY=your-api-key-here")
+    except Exception as e:
+        print(f"\nUnexpected error: {e}")
+        import traceback
+        traceback.print_exc()
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
-# Quick Start Guide
+# Quick Start Guide - AI Topic Researcher
 
-This guide will help you get started with the AI Brand Manager in just a few minutes.
+Get started with AI-powered topic research in just a few minutes.
 
 ## Prerequisites
 
@@ -32,124 +32,136 @@ This guide will help you get started with the AI Brand Manager in just a few min
    OPENAI_API_KEY=sk-your-actual-api-key-here
    ```
 
-## Your First Brand
+## Your First Topic Research
 
-1. **Create your brand identity**
+1. **Research a topic**
    
-   Run the setup command and answer the prompts:
    ```bash
-   brand-manager setup
+   topic-research research "artificial intelligence"
    ```
    
-   You'll be asked for:
-   - Brand name (required)
-   - Tagline (optional)
-   - Description (optional)
-   - Industry (optional)
-   - Brand voice/tone (optional)
-   - Target audience (optional)
-   - Core values (press Enter to skip)
-   - Unique selling points (press Enter to skip)
+   This will give you:
+   - A comprehensive summary
+   - Key points and insights
+   - Current trends
+   - Relevant statistics
+   - What audiences care about
+   - Suggested content angles
+   - Important keywords
 
-2. **View your brand**
+2. **Quick research (faster)**
+   
    ```bash
-   brand-manager show
+   topic-research quick "climate change"
    ```
 
-3. **Generate your first tagline**
+3. **Deep research (more comprehensive)**
+   
    ```bash
-   brand-manager generate-tagline --count 5
+   topic-research deep "quantum computing"
    ```
 
 ## Common Use Cases
 
-### Generate Social Media Content
+### For Blog Post Research
 
-**Twitter post:**
 ```bash
-brand-manager generate --type social_post --topic "new feature announcement" --platform twitter --length short
+topic-research research "remote work productivity" --depth deep --focus trends --focus statistics
 ```
 
-**LinkedIn post:**
+This gives you trends and statistics to cite in your blog post.
+
+### For Social Media Content
+
 ```bash
-brand-manager generate --type social_post --topic "company milestone" --platform linkedin --length medium
+topic-research quick "sustainable living tips"
 ```
 
-### Create Marketing Copy
+Quick overview perfect for creating social posts.
 
-**Product description:**
+### For Video Content
+
 ```bash
-brand-manager generate --type product_description --topic "eco-friendly water bottle" --length long
+topic-research research "AI content creation" --focus audience_interests --focus content_angles
 ```
 
-**Email subject line:**
+Learn what audiences care about and get ideas for different video angles.
+
+### Save Research for Later
+
 ```bash
-brand-manager generate --type email_subject --topic "summer sale"
+topic-research research "blockchain technology" --output blockchain-research.json
 ```
 
-### Check Brand Alignment
+Export the research to reference later.
 
-Analyze if a message fits your brand:
+## Research Depth Options
+
+- **quick** - Fast, 3-5 key points (30-45 seconds)
+- **standard** - Balanced, comprehensive (45-60 seconds)
+- **deep** - Extensive, detailed analysis (60-90 seconds)
+
+## Focus Areas
+
+Use `--focus` to zero in on specific aspects:
+
+- `trends` - Current trends and developments
+- `statistics` - Data points and numbers
+- `key_points` - Core facts and insights
+- `audience_interests` - What people care about
+- `content_angles` - Different perspectives for content
+- `keywords` - Important terms and phrases
+
+**Example:**
 ```bash
-brand-manager analyze "We're revolutionizing the industry with AI-powered solutions!"
+topic-research research "electric vehicles" --focus trends --focus statistics --focus keywords
 ```
-
-### Get Strategic Advice
-
-Ask for brand strategy recommendations:
-```bash
-brand-manager advice "How can I improve my social media engagement?"
-```
-
-### Brainstorm Campaigns
-
-Generate campaign ideas:
-```bash
-brand-manager campaign "increase brand awareness among millennials" --count 5
-```
-
-## Tips for Best Results
-
-1. **Be specific with your brand identity** - The more detailed your brand information, the better the AI can generate relevant content.
-
-2. **Experiment with different tones** - Use the `--tone` flag to override your brand voice for specific content.
-
-3. **Use the analysis feature** - Before posting content, check if it aligns with your brand.
-
-4. **Iterate on taglines** - Generate multiple variations and pick the best one.
-
-5. **Save good outputs** - The AI generates different results each time, so save content you like.
 
 ## Programmatic Usage
 
-You can also use Brand Manager in your Python scripts:
+Use in your Python scripts:
 
 ```python
-from brand_manager.models import BrandIdentity, ContentRequest
-from brand_manager.ai_manager import AIBrandManager
+from brand_manager.models import TopicResearchRequest
+from brand_manager.ai_manager import AITopicResearcher
 
-# Create brand
-brand = BrandIdentity(
-    name="My Brand",
-    tagline="Making a Difference",
-    values=["Innovation", "Quality"]
+# Initialize
+researcher = AITopicResearcher()
+
+# Research a topic
+request = TopicResearchRequest(
+    topic="machine learning",
+    depth="standard",
+    focus_areas=["trends", "statistics"]
 )
 
-# Initialize manager
-manager = AIBrandManager()
-manager.set_brand_identity(brand)
+result = researcher.research_topic(request)
 
-# Generate content
-request = ContentRequest(
-    content_type="social_post",
-    topic="product launch",
-    platform="twitter"
-)
-content = manager.generate_content(request)
-print(content)
+# Use the results
+print(result.summary)
+for point in result.key_points:
+    print(f"• {point}")
 ```
 
 See `examples/api_usage_example.py` for more examples.
+
+## Tips for Best Results
+
+1. **Be specific with your topic**
+   - ✅ "AI in medical diagnostics"
+   - ❌ "AI"
+
+2. **Choose the right depth**
+   - Quick: Social media, quick reference
+   - Standard: Most blog posts
+   - Deep: Long-form content, research papers
+
+3. **Use focus areas** when you know what you need
+   - Need data? Use `--focus statistics`
+   - Need ideas? Use `--focus content_angles`
+   - Need SEO? Use `--focus keywords`
+
+4. **Save important research** with `--output`
 
 ## Troubleshooting
 
@@ -157,18 +169,21 @@ See `examples/api_usage_example.py` for more examples.
 - Make sure you've created a `.env` file with your API key
 - Or export it: `export OPENAI_API_KEY=your-key-here`
 
-### "No brand configured" error
-- Run `brand-manager setup` to create your brand identity first
+### Slow responses
+- Use `quick` command for faster results
+- OpenAI API can be slow during peak times
 
-### Rate limit errors
-- You may be making too many requests. Wait a moment and try again.
-- Consider upgrading your OpenAI plan if you need higher limits.
+### Empty results sections
+- Try a different depth level
+- Make your topic more specific
+- Some topics may not have data in all categories
 
 ## Next Steps
 
 - Read the full [README.md](README.md) for complete documentation
 - Explore the [API example](examples/api_usage_example.py)
-- Check out all available commands: `brand-manager --help`
+- Try different topics and depth levels
+- Experiment with focus areas to get exactly what you need
 
 ## Need Help?
 

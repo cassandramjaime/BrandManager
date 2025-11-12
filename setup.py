@@ -1,5 +1,5 @@
 """
-Setup configuration for BrandManager
+Setup configuration for BrandManager (Topic Research Tool)
 """
 from setuptools import setup, find_packages
 
@@ -13,7 +13,7 @@ setup(
     name="brand-manager",
     version="0.1.0",
     author="Brand Manager Team",
-    description="AI-powered personal brand manager",
+    description="AI-powered content topic research tool",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/cassandramjaime/BrandManager",
@@ -34,7 +34,7 @@ setup(
     install_requires=requirements,
     entry_points={
         "console_scripts": [
-            "brand-manager=brand_manager.cli:main",
+            "topic-research=brand_manager.cli:main",
         ],
     },
 )
