@@ -2,6 +2,42 @@
 
 AI-powered content topic research tool that helps you research any topic dynamically to create better, more informed content.
 
+## 🚀 Quick Run (3 Simple Steps)
+
+**Step 1: Clone and Navigate**
+```bash
+git clone https://github.com/cassandramjaime/BrandManager.git
+cd BrandManager
+```
+
+**Step 2: Setup (One-Time)**
+```bash
+# Option A: Using Make (Recommended)
+make setup
+
+# Option B: Using run.sh
+./run.sh setup
+
+# Option C: Manual setup
+pip install -e .
+cp .env.example .env
+# Then edit .env and add your OpenAI API key
+```
+
+**Step 3: Run the Tool**
+```bash
+# Using Make
+make run TOPIC="AI in healthcare"
+
+# Using run.sh
+./run.sh research "AI in healthcare"
+
+# Using the command directly
+topic-research research "AI in healthcare"
+```
+
+That's it! You now have comprehensive topic research. 🎉
+
 ## Features ✨
 
 - **Dynamic Topic Research**: Research any topic using AI to get comprehensive insights
@@ -28,6 +64,31 @@ Content topic dynamic research uses AI to automatically research and analyze any
 
 ## Installation 🚀
 
+### Prerequisites
+- Python 3.8 or higher
+- pip (Python package installer)
+- An OpenAI API key ([Get one here](https://platform.openai.com/api-keys))
+
+### Installation Methods
+
+**Method 1: Quick Setup with Make (Recommended)**
+```bash
+git clone https://github.com/cassandramjaime/BrandManager.git
+cd BrandManager
+make setup
+# Edit .env and add your OpenAI API key, then you're ready to go!
+```
+
+**Method 2: Quick Setup with run.sh**
+```bash
+git clone https://github.com/cassandramjaime/BrandManager.git
+cd BrandManager
+./run.sh setup
+# Edit .env and add your OpenAI API key, then you're ready to go!
+```
+
+**Method 3: Manual Installation**
+
 1. Clone the repository:
 ```bash
 git clone https://github.com/cassandramjaime/BrandManager.git
@@ -45,24 +106,107 @@ cp .env.example .env
 # Edit .env and add your OpenAI API key
 ```
 
-## Quick Start ��
+## Running the Tool 🏃
 
-### Basic Usage
+BrandManager provides **three easy ways** to run topic research:
 
-Research a topic with standard depth:
+### Option 1: Using Make Commands (Simplest)
+
 ```bash
+# Standard research
+make run TOPIC="AI in healthcare"
+
+# Quick research (faster)
+make quick TOPIC="sustainable fashion"
+
+# Deep research (more comprehensive)
+make deep TOPIC="quantum computing"
+
+# Save results to a file
+make run TOPIC="blockchain" OUTPUT="results.json"
+
+# See all available commands
+make help
+```
+
+### Option 2: Using the run.sh Script
+
+```bash
+# Standard research
+./run.sh research "AI in healthcare"
+
+# Quick research
+./run.sh quick "sustainable fashion"
+
+# Deep research
+./run.sh deep "quantum computing"
+
+# See all available commands
+./run.sh help
+```
+
+### Option 3: Using the topic-research Command Directly
+
+```bash
+# Standard research
+topic-research research "AI in healthcare"
+
+# Quick research
+topic-research quick "sustainable fashion"
+
+# Deep research
+topic-research deep "quantum computing"
+
+# With specific focus areas
+topic-research research "electric vehicles" --focus trends --focus statistics
+
+# Save to JSON file
+topic-research research "crypto" --output crypto-research.json
+```
+
+## Quick Start 📖
+
+Now that you have the tool installed, here are common usage patterns:
+
+### Basic Research
+
+Research any topic with standard depth:
+```bash
+# Using Make
+make run TOPIC="AI in healthcare"
+
+# Using run.sh
+./run.sh research "AI in healthcare"
+
+# Using command directly
 topic-research research "AI in healthcare"
 ```
 
 ### Quick Research (Faster, Less Detail)
 
+Perfect for quick content ideas or social media posts:
 ```bash
+# Using Make
+make quick TOPIC="sustainable fashion"
+
+# Using run.sh
+./run.sh quick "sustainable fashion"
+
+# Using command directly
 topic-research quick "sustainable fashion"
 ```
 
 ### Deep Research (Slower, More Comprehensive)
 
+For long-form content or in-depth articles:
 ```bash
+# Using Make
+make deep TOPIC="quantum computing applications"
+
+# Using run.sh
+./run.sh deep "quantum computing applications"
+
+# Using command directly
 topic-research deep "quantum computing applications"
 ```
 
@@ -158,6 +302,57 @@ Comprehensive research with extensive analysis.
 **Example:**
 ```bash
 topic-research deep "machine learning in medicine"
+```
+
+## Convenient Command Reference 🛠️
+
+### Make Commands
+
+The Makefile provides the simplest way to run the tool:
+
+```bash
+# See all available commands
+make help
+
+# One-time setup
+make setup
+
+# Install or reinstall the package
+make install
+
+# Run topic research
+make run TOPIC="your topic"
+make quick TOPIC="your topic"
+make deep TOPIC="your topic"
+
+# Save results to a file
+make run TOPIC="your topic" OUTPUT="output.json"
+
+# Run tests
+make test
+
+# Clean build artifacts
+make clean
+```
+
+### run.sh Script Commands
+
+The run.sh script provides an alternative way to run the tool:
+
+```bash
+# See all available commands
+./run.sh help
+
+# One-time setup
+./run.sh setup
+
+# Install the package
+./run.sh install
+
+# Run topic research
+./run.sh research "your topic"
+./run.sh quick "your topic"
+./run.sh deep "your topic"
 ```
 
 ## Research Output Structure
