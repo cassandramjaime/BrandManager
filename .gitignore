@@ -43,6 +43,11 @@ venv.bak/
 # Brand data
 brand_config.json
 
+# Trend tracking data
+trend_data/
+trend_visualizations/
+trend_reports/
+
 # OS
 .DS_Store
 Thumbs.db
