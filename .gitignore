@@ -43,6 +43,10 @@ venv.bak/
 # Brand data
 brand_config.json
 
+# Journalist opportunity database
+opportunities.db
+pitch_*.txt
+
 # OS
 .DS_Store
 Thumbs.db

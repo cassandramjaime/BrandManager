@@ -35,6 +35,7 @@ setup(
     entry_points={
         "console_scripts": [
             "topic-research=brand_manager.cli:main",
+            "journalist-finder=brand_manager.journalist_cli:main",
         ],
     },
 )
