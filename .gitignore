@@ -43,6 +43,10 @@ venv.bak/
 # Brand data
 brand_config.json
 
+# Paper database
+papers.db
+*.db
+
 # OS
 .DS_Store
 Thumbs.db
