@@ -1,9 +1,10 @@
 # BrandManager 🎨
 
-AI-powered content topic research tool that helps you research any topic dynamically to create better, more informed content.
+AI-powered content topic research and consumer product trends tracking tool.
 
 ## Features ✨
 
+### Topic Research
 - **Dynamic Topic Research**: Research any topic using AI to get comprehensive insights
 - **Structured Results**: Get organized research with key points, trends, statistics, and more
 - **Multiple Depth Levels**: Choose from quick, standard, or deep research based on your needs
@@ -12,6 +13,15 @@ AI-powered content topic research tool that helps you research any topic dynamic
 - **Content Angles**: Get suggested angles for creating content on your researched topic
 - **Keyword Extraction**: Identify important keywords and phrases related to the topic
 - **Export Results**: Save research results to JSON for later use
+
+### Consumer Product Trends Tracking 🚀
+- **Multi-Source Aggregation**: Collect trends from Product Hunt, TechCrunch, The Verge, Hacker News, Reddit
+- **Google Trends Integration**: Monitor rising search terms in consumer tech categories
+- **AI-Powered Analysis**: Identify patterns, emerging categories, and market opportunities
+- **Historical Tracking**: Store and analyze data to identify long-term patterns
+- **Weekly Reports**: Generate comprehensive reports in PDF and Markdown formats
+- **Visualizations**: Create trend charts, category distributions, and keyword clouds
+- **Customizable Categories**: Track specific industries (social, fintech, health, productivity, etc.)
 
 ## What is Content Topic Dynamic Research?
 
@@ -262,6 +272,41 @@ BrandManager/
    - `deep` for comprehensive research or long-form content
 
 4. **Save Important Research**: Use `--output` to keep research for later reference
+
+## Consumer Product Trend Tracking 📊
+
+The BrandManager now includes powerful consumer product trend tracking capabilities. Track products and trends from multiple sources, analyze patterns with AI, and generate comprehensive weekly reports.
+
+### Quick Commands
+
+```bash
+# Collect current trends
+topic-research collect
+
+# Generate weekly report (PDF + Markdown)
+topic-research report
+
+# Run full cycle (collect + report)
+topic-research run
+
+# Configure categories to track
+topic-research configure -c social -c fintech -c health
+
+# View historical insights
+topic-research insights --days 30
+```
+
+### Features
+
+- **Multi-Source Data Collection**: Product Hunt, TechCrunch, The Verge, Hacker News, Reddit
+- **AI-Powered Analysis**: Identify patterns, emerging categories, and opportunities
+- **Weekly Reports**: PDF and Markdown reports with visualizations
+- **Historical Tracking**: Store and analyze trends over time
+- **Customizable Categories**: Focus on industries that matter to you
+
+### Complete Documentation
+
+For comprehensive trend tracking documentation, see [TREND_TRACKING_GUIDE.md](TREND_TRACKING_GUIDE.md)
 
 ## License 📄
 
