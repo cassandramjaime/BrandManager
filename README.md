@@ -1,8 +1,16 @@
 # BrandManager 🎨
 
-AI-powered content topic research tool that helps you research any topic dynamically to create better, more informed content.
+**Two powerful tools for product managers in one package:**
 
-## Features ✨
+## 🔬 AI-Powered Topic Research
+Dynamic content research tool that helps you research any topic using AI to create better, more informed content.
+
+## 🎯 Conference Tracker
+Comprehensive conference discovery and tracking system for product managers, with intelligent scoring and automated searching.
+
+---
+
+## Topic Research Features ✨
 
 - **Dynamic Topic Research**: Research any topic using AI to get comprehensive insights
 - **Structured Results**: Get organized research with key points, trends, statistics, and more
@@ -12,6 +20,16 @@ AI-powered content topic research tool that helps you research any topic dynamic
 - **Content Angles**: Get suggested angles for creating content on your researched topic
 - **Keyword Extraction**: Identify important keywords and phrases related to the topic
 - **Export Results**: Save research results to JSON for later use
+
+## Conference Tracker Features 🎯
+
+- **Smart Discovery**: Aggregate conferences from multiple sources (Luma, Eventbrite, major PM conferences)
+- **Intelligent Scoring**: AI relevance, speaker quality, and networking scores (0-10 scale)
+- **Advanced Filtering**: Date range, location type, topic focus, price, quality scores
+- **CSV Export**: Export conference data for analysis
+- **Summary Reports**: Professional reports with statistics and personalized recommendations
+- **Scheduled Searches**: Set up weekly or monthly automated searches with custom filters
+- **Rich CLI**: Color-coded output, progress indicators, and intuitive commands
 
 ## What is Content Topic Dynamic Research?
 
@@ -25,6 +43,17 @@ Content topic dynamic research uses AI to automatically research and analyze any
 - **Content Angles**: Different perspectives and approaches for creating content
 - **Competitor Insights**: How competitors approach this topic and what content opportunities exist
 - **Keywords**: Important terms and phrases to include
+
+## What is Conference Tracker?
+
+Conference Tracker helps product managers discover and track PM conferences worldwide:
+
+- **Automated Discovery**: Scrapes conferences from Luma, Eventbrite, ProductCon, Mind the Product, and more
+- **Smart Scoring**: Each conference gets scored on AI/ML relevance (0-10), speaker quality (0-10), and networking opportunities (0-10)
+- **Filtering**: Search by date, location (virtual/in-person/hybrid), topic focus (AI/ML, consumer products, general PM), price, and score
+- **Conference Data**: Name, dates, location, ticket prices, notable speakers, agenda topics, registration deadline, URL
+- **Reports**: Generate CSV exports and summary reports with top recommendations
+- **Scheduling**: Set up automated weekly or monthly searches to stay updated
 
 ## Installation 🚀
 
@@ -204,7 +233,109 @@ print(result.trends)
 print(result.statistics)
 ```
 
+---
+
+## Conference Tracker Quick Start 🎯
+
+### 1. Update Conference Database
+
+First, populate the database with conferences from all sources:
+
+```bash
+conference-tracker update
+```
+
+### 2. List Top Conferences
+
+View the highest-rated conferences:
+
+```bash
+conference-tracker list --limit 10
+```
+
+### 3. Search for Relevant Conferences
+
+Find AI/ML focused conferences:
+
+```bash
+conference-tracker search --topic "AI/ML" --min-score 5
+```
+
+### 4. Advanced Search with Export
+
+Search with multiple filters and export results:
+
+```bash
+conference-tracker search \
+  --topic "AI/ML" \
+  --location-type virtual \
+  --max-price 500 \
+  --output ai_conferences.csv \
+  --report ai_report.txt
+```
+
+### 5. Set Up Automated Searches
+
+Schedule weekly searches for AI/ML conferences:
+
+```bash
+conference-tracker schedule setup --frequency weekly --topic "AI/ML" --min-score 6
+```
+
+Check schedule status:
+
+```bash
+conference-tracker schedule status
+```
+
+Run scheduled search now:
+
+```bash
+conference-tracker schedule run --force
+```
+
+## Conference Tracker Examples 📖
+
+### Find Virtual Conferences Under $300
+
+```bash
+conference-tracker search --location-type virtual --max-price 300
+```
+
+### Find In-Person Conferences in San Francisco
+
+```bash
+conference-tracker search \
+  --location-type in-person \
+  --location "San Francisco" \
+  --output sf_conferences.csv
+```
+
+### Find High-Quality AI/ML Conferences
+
+```bash
+conference-tracker search \
+  --topic "AI/ML" \
+  --min-score 7 \
+  --report top_ai_conferences.txt
+```
+
+### Find Upcoming Conferences (Next 3 Months)
+
+```bash
+conference-tracker search \
+  --from-date 2024-01-01 \
+  --to-date 2024-03-31 \
+  --output q1_conferences.csv
+```
+
+For complete conference tracker documentation, see [CONFERENCE_TRACKER_README.md](CONFERENCE_TRACKER_README.md)
+
+---
+
 ## Use Cases 💡
+
+### Topic Research
 
 - **Content Writers**: Research topics before writing articles, blogs, or social posts
 - **Marketers**: Understand trending topics and audience interests
@@ -213,11 +344,26 @@ print(result.statistics)
 - **Educators**: Research topics for lesson planning
 - **Anyone**: Learn about any topic quickly with structured information
 
+### Conference Tracker
+
+- **Individual PMs**: Find relevant conferences matching your interests (AI/ML, specific topics)
+- **Product Leaders**: Plan team conference attendance and budget
+- **Learning & Development**: Track professional development opportunities
+- **Remote Workers**: Find virtual conference options
+- **Budget-Conscious**: Filter by price to find affordable or free options
+- **Networking**: Find high-quality networking events based on speaker caliber
+
 ## Requirements 📋
 
 - Python 3.8+
-- OpenAI API key
-- Dependencies listed in `requirements.txt`
+- OpenAI API key (for topic research feature)
+- Dependencies listed in `requirements.txt`:
+  - openai>=1.0.0 (topic research)
+  - beautifulsoup4>=4.12.0 (conference scraping)
+  - requests>=2.31.0 (conference scraping)
+  - pydantic>=2.0.0 (data validation)
+  - click>=8.0.0 (CLI)
+  - colorama>=0.4.6 (colored output)
 
 ## Development 🛠️
 
@@ -233,16 +379,25 @@ pytest tests/
 BrandManager/
 ├── brand_manager/
 │   ├── __init__.py
-│   ├── models.py          # Pydantic models for requests/results
-│   ├── ai_manager.py      # Core AI research functionality
-│   └── cli.py             # Command-line interface
+│   ├── models.py                  # Topic research models
+│   ├── ai_manager.py              # AI topic research
+│   ├── cli.py                     # Topic research CLI
+│   ├── conference_models.py       # Conference data models
+│   ├── conference_db.py           # SQLite database
+│   ├── conference_scrapers.py     # Conference scrapers
+│   ├── conference_scorer.py       # Scoring system
+│   ├── conference_exporter.py     # Export & reporting
+│   ├── conference_cli.py          # Conference CLI
+│   └── conference_scheduler.py    # Scheduling
 ├── tests/
-│   └── test_topic_research.py
+│   ├── test_topic_research.py
+│   └── test_conference_tracking.py
 ├── examples/
 │   └── api_usage_example.py
 ├── setup.py
 ├── requirements.txt
-└── README.md
+├── README.md
+└── CONFERENCE_TRACKER_README.md
 ```
 
 ## Tips for Best Results 💡
