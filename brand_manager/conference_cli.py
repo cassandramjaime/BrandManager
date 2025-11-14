@@ -12,6 +12,7 @@ from .conference_db import ConferenceDatabase
 from .conference_scrapers import ConferenceAggregator
 from .conference_scorer import ConferenceScorer
 from .conference_exporter import ConferenceExporter
+from .conference_scheduler import ConferenceScheduler
 
 # Initialize colorama
 init(autoreset=True)
@@ -305,6 +306,172 @@ def _score_with_color(score):
         return f"{Fore.YELLOW}{score}{Style.RESET_ALL}"
     else:
         return f"{Fore.RED}{score}{Style.RESET_ALL}"
+
+
+@conference_cli.command('schedule')
+@click.argument('action', type=click.Choice(['setup', 'status', 'run', 'enable', 'disable']))
+@click.option('--frequency', type=click.Choice(['weekly', 'monthly']), help='Schedule frequency')
+@click.option('--from-date', help='Start date filter (YYYY-MM-DD)')
+@click.option('--to-date', help='End date filter (YYYY-MM-DD)')
+@click.option('--location-type', type=click.Choice(['virtual', 'in-person', 'hybrid']), 
+              help='Filter by location type')
+@click.option('--topic', multiple=True, 
+              type=click.Choice([t.value for t in TopicFocus]),
+              help='Filter by topic focus (can use multiple times)')
+@click.option('--min-score', type=float, help='Minimum overall score (0-10)')
+@click.option('--max-price', type=float, help='Maximum ticket price')
+@click.option('--output-dir', default='.', help='Output directory for reports')
+@click.option('--force', is_flag=True, help='Force run even if not scheduled (for run action)')
+@click.option('--db', default='conferences.db', help='Database file path')
+def schedule_command(action, frequency, from_date, to_date, location_type, topic, 
+                     min_score, max_price, output_dir, force, db):
+    """Manage scheduled conference searches
+    
+    Actions:
+        setup - Set up a new schedule
+        status - Show current schedule status
+        run - Run scheduled search now
+        enable - Enable scheduled searches
+        disable - Disable scheduled searches
+    
+    Examples:
+        conference-tracker schedule setup --frequency weekly --topic "AI/ML"
+        conference-tracker schedule status
+        conference-tracker schedule run
+    """
+    scheduler = ConferenceScheduler()
+    
+    try:
+        if action == 'setup':
+            if not frequency:
+                click.echo(f"{Fore.RED}Error: --frequency is required for setup{Style.RESET_ALL}")
+                return 1
+            
+            # Build filters
+            filters = ConferenceSearchFilters()
+            
+            if from_date:
+                filters.start_date_from = datetime.strptime(from_date, '%Y-%m-%d')
+            
+            if to_date:
+                filters.start_date_to = datetime.strptime(to_date, '%Y-%m-%d')
+            
+            if location_type:
+                filters.location_type = LocationType(location_type)
+            
+            if topic:
+                filters.topic_focus = [TopicFocus(t) for t in topic]
+            
+            if min_score is not None:
+                filters.min_score = min_score
+            
+            if max_price is not None:
+                filters.max_price = max_price
+            
+            scheduler.set_schedule(frequency, filters)
+            
+            click.echo(f"\n{Fore.GREEN}✓ Schedule configured successfully!{Style.RESET_ALL}")
+            click.echo(f"{Fore.CYAN}Frequency:{Style.RESET_ALL} {frequency}")
+            click.echo(f"{Fore.CYAN}Next run:{Style.RESET_ALL} {scheduler.config.next_run.strftime('%Y-%m-%d %H:%M UTC')}")
+            
+            if any([from_date, to_date, location_type, topic, min_score, max_price]):
+                click.echo(f"\n{Fore.YELLOW}Active filters:{Style.RESET_ALL}")
+                if from_date:
+                    click.echo(f"  • From date: {from_date}")
+                if to_date:
+                    click.echo(f"  • To date: {to_date}")
+                if location_type:
+                    click.echo(f"  • Location type: {location_type}")
+                if topic:
+                    click.echo(f"  • Topic focus: {', '.join(topic)}")
+                if min_score:
+                    click.echo(f"  • Min score: {min_score}")
+                if max_price:
+                    click.echo(f"  • Max price: ${max_price}")
+            click.echo()
+        
+        elif action == 'status':
+            status = scheduler.get_status()
+            
+            click.echo(f"\n{Fore.CYAN}Schedule Status{Style.RESET_ALL}")
+            click.echo(f"{'=' * 50}")
+            
+            enabled_str = f"{Fore.GREEN}Enabled{Style.RESET_ALL}" if status['enabled'] else f"{Fore.RED}Disabled{Style.RESET_ALL}"
+            click.echo(f"Status: {enabled_str}")
+            click.echo(f"Frequency: {status['frequency']}")
+            
+            if status['last_run']:
+                last_run = datetime.fromisoformat(status['last_run'])
+                click.echo(f"Last run: {last_run.strftime('%Y-%m-%d %H:%M UTC')}")
+            else:
+                click.echo("Last run: Never")
+            
+            if status['next_run']:
+                next_run = datetime.fromisoformat(status['next_run'])
+                click.echo(f"Next run: {next_run.strftime('%Y-%m-%d %H:%M UTC')}")
+            else:
+                click.echo("Next run: Not scheduled")
+            
+            # Show filters if any are set
+            filters = status['filters']
+            has_filters = any([
+                filters.get('start_date_from'),
+                filters.get('start_date_to'),
+                filters.get('location_type'),
+                filters.get('topic_focus'),
+                filters.get('min_score') is not None,
+                filters.get('max_price') is not None
+            ])
+            
+            if has_filters:
+                click.echo(f"\n{Fore.YELLOW}Active filters:{Style.RESET_ALL}")
+                if filters.get('start_date_from'):
+                    click.echo(f"  • From date: {filters['start_date_from']}")
+                if filters.get('start_date_to'):
+                    click.echo(f"  • To date: {filters['start_date_to']}")
+                if filters.get('location_type'):
+                    click.echo(f"  • Location type: {filters['location_type']}")
+                if filters.get('topic_focus'):
+                    click.echo(f"  • Topic focus: {', '.join(filters['topic_focus'])}")
+                if filters.get('min_score') is not None:
+                    click.echo(f"  • Min score: {filters['min_score']}")
+                if filters.get('max_price') is not None:
+                    click.echo(f"  • Max price: ${filters['max_price']}")
+            click.echo()
+        
+        elif action == 'run':
+            click.echo(f"\n{Fore.CYAN}Running scheduled search...{Style.RESET_ALL}\n")
+            
+            result = scheduler.run_scheduled_search(db, output_dir, force=force)
+            
+            if result:
+                click.echo(f"{Fore.GREEN}✓ Scheduled search completed!{Style.RESET_ALL}\n")
+                click.echo(f"Conferences found: {result['num_conferences']}")
+                click.echo(f"CSV saved to: {result['csv_path']}")
+                click.echo(f"Report saved to: {result['report_path']}\n")
+                
+                # Show recommendations
+                if result['summary'].recommendations:
+                    click.echo(f"{Fore.CYAN}Top Recommendations:{Style.RESET_ALL}")
+                    for i, rec in enumerate(result['summary'].recommendations[:3], 1):
+                        click.echo(f"{i}. {rec}")
+                    click.echo()
+            else:
+                click.echo(f"{Fore.YELLOW}Schedule is disabled or not yet due to run. Use --force to run anyway.{Style.RESET_ALL}\n")
+        
+        elif action == 'enable':
+            scheduler.enable_schedule()
+            click.echo(f"\n{Fore.GREEN}✓ Schedule enabled{Style.RESET_ALL}\n")
+        
+        elif action == 'disable':
+            scheduler.disable_schedule()
+            click.echo(f"\n{Fore.YELLOW}Schedule disabled{Style.RESET_ALL}\n")
+    
+    except Exception as e:
+        click.echo(f"{Fore.RED}Error: {e}{Style.RESET_ALL}")
+        import traceback
+        traceback.print_exc()
+        return 1
 
 
 if __name__ == '__main__':

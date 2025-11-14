@@ -46,6 +46,7 @@ brand_config.json
 # Conference data
 conferences.db
 *.csv
+schedule_config.json
 
 # OS
 .DS_Store
