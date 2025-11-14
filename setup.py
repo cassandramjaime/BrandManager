@@ -35,6 +35,7 @@ setup(
     entry_points={
         "console_scripts": [
             "topic-research=brand_manager.cli:main",
+            "conference-tracker=brand_manager.conference_cli:conference_cli",
         ],
     },
 )
