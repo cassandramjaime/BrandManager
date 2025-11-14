@@ -1,5 +1,5 @@
 """
-Command-line interface for AI Topic Researcher
+Command-line interface for AI Topic Researcher and Podcast Finder
 """
 import json
 import click
@@ -8,6 +8,7 @@ from colorama import init, Fore, Style
 
 from .models import TopicResearchRequest
 from .ai_manager import AITopicResearcher
+from .podcast_cli import podcast_cli
 
 # Initialize colorama for cross-platform colored output
 init(autoreset=True)
@@ -19,8 +20,12 @@ load_dotenv()
 @click.group()
 @click.version_option(version="0.1.0")
 def cli():
-    """AI Topic Researcher - Dynamic content topic research tool"""
+    """BrandManager - Topic research and podcast guest opportunity finder"""
     pass
+
+
+# Add podcast subcommand
+cli.add_command(podcast_cli)
 
 
 @cli.command()

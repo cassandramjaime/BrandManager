@@ -35,6 +35,7 @@ setup(
     entry_points={
         "console_scripts": [
             "topic-research=brand_manager.cli:main",
+            "podcast-finder=brand_manager.podcast_cli:main",
         ],
     },
 )

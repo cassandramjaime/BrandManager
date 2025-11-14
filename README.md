@@ -1,9 +1,10 @@
 # BrandManager 🎨
 
-AI-powered content topic research tool that helps you research any topic dynamically to create better, more informed content.
+AI-powered content topic research and podcast guest opportunity finder that helps you research any topic dynamically and discover podcast opportunities for thought leadership.
 
 ## Features ✨
 
+### Topic Research
 - **Dynamic Topic Research**: Research any topic using AI to get comprehensive insights
 - **Structured Results**: Get organized research with key points, trends, statistics, and more
 - **Multiple Depth Levels**: Choose from quick, standard, or deep research based on your needs
@@ -12,6 +13,14 @@ AI-powered content topic research tool that helps you research any topic dynamic
 - **Content Angles**: Get suggested angles for creating content on your researched topic
 - **Keyword Extraction**: Identify important keywords and phrases related to the topic
 - **Export Results**: Save research results to JSON for later use
+
+### Podcast Guest Opportunity Finder 🎙️
+- **Find Opportunities**: Discover podcasts seeking AI/ML and Product Management guests
+- **Smart Scoring**: Intelligent scoring based on audience size, topic relevance, and engagement
+- **Track Applications**: Monitor application status from discovery to completion
+- **Database Storage**: SQLite database for persistent tracking
+- **Export to Spreadsheet**: Export opportunities to CSV or Markdown format
+- **Filter & Search**: Find the best-fit opportunities based on your criteria
 
 ## What is Content Topic Dynamic Research?
 
@@ -45,40 +54,80 @@ cp .env.example .env
 # Edit .env and add your OpenAI API key
 ```
 
-## Quick Start ��
+## Quick Start 🚀
 
-### Basic Usage
+### Topic Research
+
+#### Basic Usage
 
 Research a topic with standard depth:
 ```bash
 topic-research research "AI in healthcare"
 ```
 
-### Quick Research (Faster, Less Detail)
+#### Quick Research (Faster, Less Detail)
 
 ```bash
 topic-research quick "sustainable fashion"
 ```
 
-### Deep Research (Slower, More Comprehensive)
+#### Deep Research (Slower, More Comprehensive)
 
 ```bash
 topic-research deep "quantum computing applications"
 ```
 
-### Focused Research
+#### Focused Research
 
 Focus on specific aspects:
 ```bash
 topic-research research "electric vehicles" --focus trends --focus statistics
 ```
 
-### Save Results
+#### Save Results
 
 Export research to a JSON file:
 ```bash
 topic-research research "remote work trends" --output results.json
 ```
+
+### Podcast Guest Opportunity Finder 🎙️
+
+#### Add a Podcast Opportunity
+
+```bash
+podcast-finder add "Product Thinking Podcast" \
+  --host "Melissa Perri" \
+  --contact "podcast@productthinking.com" \
+  --description "Deep dives into product strategy" \
+  --audience 25000
+```
+
+#### List Opportunities
+
+```bash
+podcast-finder list --status not_applied --min-score 60
+```
+
+#### Update Application Status
+
+```bash
+podcast-finder update-status 1 applied --notes "Sent pitch email"
+```
+
+#### Export to Spreadsheet
+
+```bash
+podcast-finder export --format csv --output opportunities.csv
+```
+
+#### View Statistics
+
+```bash
+podcast-finder stats
+```
+
+See [PODCAST_FINDER.md](PODCAST_FINDER.md) for complete documentation.
 
 ## Usage Examples 📖
 

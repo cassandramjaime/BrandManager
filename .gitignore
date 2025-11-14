@@ -43,6 +43,9 @@ venv.bak/
 # Brand data
 brand_config.json
 
+# Podcast database
+podcast_opportunities.db
+
 # OS
 .DS_Store
 Thumbs.db
