@@ -1,9 +1,12 @@
 # BrandManager 🎨
 
-AI-powered content topic research tool that helps you research any topic dynamically to create better, more informed content.
+AI-powered toolkit for content creators and researchers, featuring:
+1. **Dynamic Topic Research** - Research any topic using AI to create better, more informed content
+2. **ML/AI Paper Monitoring** - Track, summarize, and organize recent ML/AI research papers
 
 ## Features ✨
 
+### Content Topic Research
 - **Dynamic Topic Research**: Research any topic using AI to get comprehensive insights
 - **Structured Results**: Get organized research with key points, trends, statistics, and more
 - **Multiple Depth Levels**: Choose from quick, standard, or deep research based on your needs
@@ -12,6 +15,15 @@ AI-powered content topic research tool that helps you research any topic dynamic
 - **Content Angles**: Get suggested angles for creating content on your researched topic
 - **Keyword Extraction**: Identify important keywords and phrases related to the topic
 - **Export Results**: Save research results to JSON for later use
+
+### ML/AI Research Paper Monitoring 🔬
+- **Multi-Source Fetching**: Pull papers from arXiv, Papers with Code, and Hugging Face
+- **Smart Filtering**: Filter by date, topics (LLMs, CV, RL, AI safety), and citations
+- **AI Summaries**: Generate intelligent 2-3 paragraph summaries with product relevance
+- **Categorization**: Automatically categorize by application area, difficulty, and production-readiness
+- **Weekly Digests**: Generate top 10 paper digests in JSON, HTML, or text format
+- **Full-Text Search**: SQLite database with FTS5 for instant paper search
+- **Rate Limiting**: Respects API limits for all sources
 
 ## What is Content Topic Dynamic Research?
 
@@ -79,6 +91,25 @@ Export research to a JSON file:
 ```bash
 topic-research research "remote work trends" --output results.json
 ```
+
+### ML/AI Paper Monitoring
+
+Fetch recent papers:
+```bash
+topic-research papers fetch --days 30 --topic llms --source arxiv --summarize
+```
+
+Search past papers:
+```bash
+topic-research papers search "transformer architecture" --limit 10
+```
+
+Generate weekly digest:
+```bash
+topic-research papers digest --days 7 --top-n 10 --output digest.html --format html
+```
+
+📚 **Full Paper Monitoring Guide**: See [PAPER_MONITORING.md](PAPER_MONITORING.md) for complete documentation.
 
 ## Usage Examples 📖
 
