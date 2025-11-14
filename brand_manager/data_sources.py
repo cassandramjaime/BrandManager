@@ -283,7 +283,15 @@ class GoogleTrendsCollector:
     """Collector for Google Trends data"""
     
     def __init__(self):
-        self.pytrends = TrendReq(hl='en-US', tz=360)
+        self._pytrends = None
+    
+    @property
+    def pytrends(self):
+        """Lazy-load pytrends to avoid network calls on initialization"""
+        if self._pytrends is None:
+            from pytrends.request import TrendReq
+            self._pytrends = TrendReq(hl='en-US', tz=360)
+        return self._pytrends
     
     def collect_rising_trends(self, keywords: List[str], category: str = 'tech') -> List[GoogleTrendData]:
         """Collect Google Trends data for keywords"""

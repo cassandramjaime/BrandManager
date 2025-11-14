@@ -22,10 +22,18 @@ class TrendTracker:
                  report_dir: str = None):
         """Initialize the trend tracker"""
         self.aggregator = TrendDataAggregator()
-        self.analyzer = TrendAnalyzer(api_key=openai_api_key)
+        self._analyzer = None
+        self._openai_api_key = openai_api_key
         self.storage = TrendStorage(storage_dir=storage_dir)
         self.visualizer = TrendVisualizer(output_dir=viz_dir)
         self.report_generator = ReportGenerator(output_dir=report_dir)
+    
+    @property
+    def analyzer(self):
+        """Lazy-load analyzer to allow initialization without API key"""
+        if self._analyzer is None:
+            self._analyzer = TrendAnalyzer(api_key=self._openai_api_key)
+        return self._analyzer
     
     def collect_current_trends(self,
                                product_hunt: bool = True,
